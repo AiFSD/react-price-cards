@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import PriceCard from './PriceCard';
+import React from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const priceData = [
+    {
+      plan: 'FREE',
+      price: '0',
+      features: [
+        '✔  Single User',
+        '✔  50GB Storage',
+        '✔  Unlimited Public Projects',
+        '✔  Community Access',
+        '✘  Unlimited Private Projects',
+        '✘  Dedicated Phone Support',
+        '✘  Free Subdomain',
+        '✘  Monthly Status Reports',
+      ],
+    },
+    {
+      plan: 'PLUS',
+      price: '9',
+      features: [
+        '✔ 5 Users',
+        '✔ 50GB Storage',
+        '✔ Unlimited Public Projects',
+        '✔ Community Access',
+        '✔ Unlimited Private Projects',
+        '✔ Dedicated Phone Support',
+        '✔ Free Subdomain',
+        '✘ Monthly Status Reports',
+      ],
+    },
+    {
+      plan: 'PRO',
+      price: '49',
+      features: [
+        '✔ Unlimited Users',
+        '✔ 50GB Storage',
+        '✔ Unlimited Public Projects',
+        '✔ Community Access',
+        '✔ Unlimited Private Projects',
+        '✔ Dedicated Phone Support',
+        '✔ Free Subdomain',
+        '✔ Monthly Status Reports',
+      ],
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="price-cards-container">
+      {priceData.map((card, index) => (
+        <PriceCard key={index} {...card} />
+      ))}
+    </div>
+  );
 }
 
-export default App
+export default App;
